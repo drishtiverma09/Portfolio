@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drishti Verma — Frontend Dev & AI Enthusiast</title>
+<meta name="description" content="Drishti Verma — CSE AI&ML student, frontend developer, creative problem-solver from Zirakpur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e0f0d;--bg2:#131510;--bg3:#171a13;
+  --sf:rgba(255,255,255,0.04);--sf2:rgba(255,255,255,0.07);
+  --br:rgba(255,255,255,0.08);--bra:rgba(107,200,155,0.22);
+  --tx:#eef2ee;--mu:#7a8a78;
+  --g1:#6bc89b;--g2:#d4a843;
+  --grad:linear-gradient(135deg,#6bc89b,#d4a843);
+  --fd:'Syne',sans-serif;--fb:'DM Sans',sans-serif;--fm:'JetBrains Mono',monospace;
+}
+body.light{--bg:#f4f6f1;--bg2:#edf0e9;--bg3:#e6ebe0;--sf:rgba(0,0,0,0.04);--sf2:rgba(0,0,0,0.07);--br:rgba(0,0,0,0.09);--bra:rgba(107,200,155,0.35);--tx:#1a1f18;--mu:#5a6858;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:var(--fb);line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--g1);border-radius:2px}
+
+/* orbs */
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);animation:forb 12s ease-in-out infinite}
+.o1{width:450px;height:450px;background:rgba(107,200,155,0.07);top:-120px;right:-80px}
+.o2{width:300px;height:300px;background:rgba(212,168,67,0.06);bottom:10%;left:-60px;animation-delay:-5s}
+@keyframes forb{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-22px)}}
+
+/* theme btn */
+#tt{position:fixed;bottom:1.8rem;right:1.8rem;z-index:300;width:44px;height:44px;border-radius:50%;background:var(--sf2);border:1px solid var(--br);backdrop-filter:blur(16px);display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:transform .3s,border-color .3s}
+#tt:hover{transform:scale(1.12) rotate(18deg);border-color:var(--g1)}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 5vw;background:rgba(14,15,13,0.88);backdrop-filter:blur(22px);border-bottom:1px solid var(--br);transition:background .3s}
+body.light nav{background:rgba(244,246,241,0.9)}
+.logo{font-family:var(--fd);font-weight:800;font-size:1.15rem;text-decoration:none;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nl{display:flex;gap:1.8rem;list-style:none}
+.nl a{font-size:0.78rem;color:var(--mu);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .25s;position:relative}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--grad);transition:width .3s}
+.nl a:hover,.nl a.act{color:var(--tx)}
+.nl a:hover::after,.nl a.act::after{width:100%}
+.ncta{padding:.45rem 1.2rem;border-radius:100px;background:var(--grad);color:#0e0f0d;font-size:.76rem;font-weight:700;text-decoration:none;transition:opacity .3s,transform .3s}
+.ncta:hover{opacity:.85;transform:translateY(-1px)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+.hbg span{display:block;width:22px;height:2px;background:var(--tx);border-radius:2px;transition:.3s}
+
+/* hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5vw 4rem;position:relative;overflow:hidden}
+.hbg-el{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 55% 50% at 72% 25%,rgba(107,200,155,0.09) 0%,transparent 65%),radial-gradient(ellipse 40% 40% at 15% 75%,rgba(212,168,67,0.07) 0%,transparent 65%)}
+.hgrid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(107,200,155,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(107,200,155,0.035) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black 20%,transparent 80%)}
+#hc{position:absolute;inset:0;z-index:0}
+.hcon{position:relative;z-index:1;max-width:780px}
+
+.badge{display:inline-flex;align-items:center;gap:.55rem;padding:.35rem 1rem;border-radius:100px;border:1px solid var(--bra);background:rgba(107,200,155,0.05);font-family:var(--fm);font-size:.68rem;color:var(--g1);letter-spacing:.1em;margin-bottom:1.8rem;animation:fup .9s ease both}
+.bdot{width:7px;height:7px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px #4ade80;animation:pdot 2s infinite}
+@keyframes pdot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.6);opacity:.6}}
+
+.hname{font-family:var(--fd);font-size:clamp(3.2rem,8.5vw,7rem);font-weight:800;line-height:.92;letter-spacing:-.03em;animation:fup .9s .1s ease both}
+.hname .g{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hsub{margin-top:1.2rem;font-size:clamp(.95rem,2vw,1.15rem);color:var(--mu);font-weight:300;animation:fup .9s .2s ease both}
+.tw{color:var(--g2);font-weight:500}
+.tc{color:var(--g1);animation:blink .8s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.hdesc{margin-top:.9rem;max-width:520px;color:var(--mu);font-size:.9rem;font-weight:300;line-height:1.8;animation:fup .9s .3s ease both}
+.hdesc strong{color:var(--tx);font-weight:500}
+
+.hact{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.2rem;animation:fup .9s .4s ease both}
+.bp{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 2rem;border-radius:100px;background:var(--grad);color:#0e0f0d;font-weight:700;font-size:.86rem;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 26px rgba(107,200,155,0.28)}
+.bp:hover{transform:translateY(-3px);box-shadow:0 10px 38px rgba(107,200,155,0.4)}
+.bg{display:inline-flex;align-items:center;gap:.45rem;padding:.8rem 1.8rem;border-radius:100px;border:1.5px solid var(--bra);background:transparent;color:var(--tx);font-weight:500;font-size:.86rem;text-decoration:none;transition:border-color .3s,background .3s,transform .3s}
+.bg:hover{border-color:var(--g1);background:rgba(107,200,155,0.07);transform:translateY(-3px)}
+
+.hsoc{display:flex;gap:.7rem;margin-top:2rem;animation:fup .9s .5s ease both}
+.soc{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:9px;border:1px solid var(--br);background:var(--sf);color:var(--mu);text-decoration:none;transition:all .3s}
+.soc:hover{border-color:var(--g1);color:var(--g1);transform:translateY(-3px);background:rgba(107,200,155,0.08)}
+.soc svg{width:15px;height:15px}
+
+.hscroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--mu);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;z-index:1;animation:fup 1s .7s ease both}
+.sbar{width:1.5px;height:32px;background:linear-gradient(to bottom,var(--g1),transparent);animation:sanim 2s ease-in-out infinite}
+@keyframes sanim{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.3;transform:scaleY(.4)}}
+@keyframes fup{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* sections */
+section{padding:5rem 5vw;position:relative}
+.sl{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--fm);font-size:.68rem;color:var(--g1);letter-spacing:.14em;text-transform:uppercase;margin-bottom:.6rem}
+.sl::before{content:'//';opacity:.4}
+.st{font-family:var(--fd);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em}
+.st .hi{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:translateY(0)}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* ── ABOUT (compact 2-col) ── */
+#about{background:var(--bg2)}
+.arow{display:grid;grid-template-columns:200px 1fr;gap:3rem;margin-top:2.5rem;align-items:center}
+.acard{background:var(--sf);border:1px solid var(--bra);border-radius:20px;padding:1.8rem 1.4rem;text-align:center}
+.acard-emoji{font-size:3.5rem;margin-bottom:.8rem;display:block}
+.acard-name{font-family:var(--fd);font-size:1rem;font-weight:800;margin-bottom:.25rem}
+.acard-role{font-family:var(--fm);font-size:.65rem;color:var(--g1);letter-spacing:.08em}
+.acard-loc{font-size:.75rem;color:var(--mu);margin-top:.4rem}
+.atext p{font-size:.88rem;color:var(--mu);margin-bottom:.75rem;line-height:1.75}
+.atext p strong{color:var(--tx);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.chip{display:flex;align-items:center;gap:.3rem;padding:.25rem .75rem;border-radius:7px;border:1px solid var(--br);background:var(--sf);font-size:.73rem;color:var(--mu);transition:all .25s;cursor:default}
+.chip:hover{border-color:var(--g1);color:var(--g1);transform:translateY(-2px)}
+
+/* ── SKILLS ── */
+#skills{}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-top:2.5rem}
+.sc{background:var(--sf);border:1px solid var(--br);border-radius:16px;padding:1.3rem;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.sc:hover{transform:translateY(-4px);border-color:var(--bra)}
+.sc:hover::after{transform:scaleX(1)}
+.sc-ico{font-size:1.5rem;margin-bottom:.6rem}
+.sc-nm{font-family:var(--fd);font-size:.82rem;font-weight:700;margin-bottom:.8rem}
+.pills{display:flex;flex-wrap:wrap;gap:.35rem}
+.pill{padding:.18rem .6rem;border-radius:6px;background:var(--bg);border:1px solid var(--br);font-family:var(--fm);font-size:.65rem;color:var(--mu);transition:all .22s}
+.pill:hover{background:rgba(107,200,155,0.1);border-color:var(--g1);color:var(--g1)}
+.pill.gd:hover{background:rgba(212,168,67,0.1);border-color:var(--g2);color:var(--g2)}
+
+/* ── PROJECTS ── */
+#projects{background:var(--bg2)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.8rem;margin-top:2.5rem}
+.pc{background:var(--sf);border:1px solid var(--br);border-radius:18px;overflow:hidden;transition:transform .38s cubic-bezier(.25,.46,.45,.94),border-color .3s,box-shadow .38s}
+.pc:hover{transform:translateY(-8px);border-color:var(--bra);box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.pt{height:150px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pt-ico{font-size:3rem;position:relative;z-index:1;transition:transform .45s}
+.pc:hover .pt-ico{transform:scale(1.15)}
+.pt-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,var(--bg2))}
+.tbs{position:absolute;top:.8rem;left:.8rem;display:flex;gap:.35rem;z-index:2}
+.tb{padding:.15rem .5rem;border-radius:5px;background:rgba(14,15,13,.75);backdrop-filter:blur(8px);border:1px solid rgba(107,200,155,0.2);font-family:var(--fm);font-size:.6rem;color:var(--g1)}
+.pb{padding:1.3rem}
+.pnum{font-family:var(--fm);font-size:.6rem;color:var(--g2);letter-spacing:.08em;margin-bottom:.3rem}
+.ptitle{font-family:var(--fd);font-size:1.05rem;font-weight:700;margin-bottom:.45rem}
+.pdesc{font-size:.82rem;color:var(--mu);margin-bottom:1rem;line-height:1.6}
+.pfl{display:flex;gap:.6rem;flex-wrap:wrap}
+.pl{display:inline-flex;align-items:center;gap:.35rem;padding:.42rem .9rem;border-radius:8px;border:1px solid var(--br);background:var(--sf2);font-size:.74rem;color:var(--tx);text-decoration:none;transition:all .22s}
+.pl:hover{border-color:var(--g1);background:rgba(107,200,155,0.08);transform:translateY(-2px)}
+.pl.lv{background:var(--grad);border-color:transparent;color:#0e0f0d;font-weight:700}
+.pl.lv:hover{opacity:.85;transform:translateY(-2px)}
+.pc.wip{border-style:dashed;opacity:.55}
+
+/* ── ACTIVITIES (compact) ── */
+#activities{}
+.agtabs{display:flex;gap:.5rem;margin-bottom:2rem;flex-wrap:wrap}
+.atab{padding:.35rem .9rem;border-radius:8px;border:1px solid var(--br);background:var(--sf);font-size:.75rem;color:var(--mu);cursor:pointer;transition:all .25s}
+.atab:hover,.atab.on{border-color:var(--g1);color:var(--g1);background:rgba(107,200,155,0.08)}
+.acardsw{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.acard2{background:var(--sf);border:1px solid var(--br);border-radius:14px;padding:1.1rem 1.2rem;transition:border-color .3s,transform .3s}
+.acard2:hover{border-color:var(--bra);transform:translateY(-3px)}
+.ac2-ico{font-size:1.4rem;margin-bottom:.5rem}
+.ac2-title{font-family:var(--fd);font-size:.88rem;font-weight:700;margin-bottom:.2rem}
+.ac2-sub{font-size:.75rem;color:var(--g2);margin-bottom:.4rem}
+.ac2-desc{font-size:.78rem;color:var(--mu);line-height:1.6}
+.ac2-badge{display:inline-block;margin-top:.5rem;padding:.12rem .5rem;border-radius:5px;background:rgba(107,200,155,0.1);border:1px solid rgba(107,200,155,0.2);font-family:var(--fm);font-size:.6rem;color:var(--g1)}
+
+/* ── AI CHAT ── */
+#ai{background:var(--bg2)}
+.ai-wrap{margin-top:2.5rem;background:var(--sf);border:1px solid var(--bra);border-radius:20px;overflow:hidden;max-width:680px}
+.ai-header{display:flex;align-items:center;gap:.8rem;padding:1rem 1.4rem;border-bottom:1px solid var(--br);background:rgba(107,200,155,0.04)}
+.ai-dot{width:9px;height:9px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px #4ade80;animation:pdot 2s infinite}
+.ai-title{font-family:var(--fd);font-size:.88rem;font-weight:700}
+.ai-sub{font-family:var(--fm);font-size:.6rem;color:var(--mu);letter-spacing:.06em}
+.ai-msgs{padding:1.2rem 1.4rem;min-height:160px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:.8rem}
+.ai-msgs::-webkit-scrollbar{width:2px}
+.msg{display:flex;gap:.65rem;align-items:flex-start;animation:fup .4s ease both}
+.msg.bot .bubble{background:var(--bg3);border:1px solid var(--br);color:var(--tx)}
+.msg.usr{flex-direction:row-reverse}
+.msg.usr .bubble{background:linear-gradient(135deg,rgba(107,200,155,0.15),rgba(212,168,67,0.1));border:1px solid var(--bra);color:var(--tx)}
+.bubble{padding:.6rem .9rem;border-radius:12px;font-size:.82rem;line-height:1.6;max-width:78%}
+.msg-av{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;margin-top:2px}
+.msg.bot .msg-av{background:var(--grad)}
+.msg.usr .msg-av{background:var(--sf2);border:1px solid var(--br)}
+.ai-chips{display:flex;gap:.5rem;flex-wrap:wrap;padding:.8rem 1.4rem;border-top:1px solid var(--br)}
+.aq{padding:.3rem .8rem;border-radius:100px;border:1px solid var(--bra);background:transparent;font-size:.73rem;color:var(--g1);cursor:pointer;transition:all .25s;font-family:var(--fb)}
+.aq:hover{background:rgba(107,200,155,0.1);transform:translateY(-1px)}
+.ai-inp{display:flex;gap:.6rem;padding:.9rem 1.4rem;border-top:1px solid var(--br)}
+.ai-inp input{flex:1;background:var(--bg3);border:1px solid var(--br);border-radius:9px;padding:.6rem .9rem;color:var(--tx);font-family:var(--fb);font-size:.83rem;outline:none;transition:border-color .3s}
+.ai-inp input:focus{border-color:var(--g1)}
+.ai-send{padding:.6rem 1.2rem;border-radius:9px;background:var(--grad);border:none;color:#0e0f0d;font-weight:700;font-size:.8rem;cursor:pointer;transition:opacity .3s,transform .3s}
+.ai-send:hover{opacity:.85;transform:scale(1.05)}
+
+/* ── CONTACT ── */
+#contact{}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start}
+.cblurb{font-size:.88rem;color:var(--mu);line-height:1.8;margin-bottom:1.5rem}
+.ci{display:flex;align-items:center;gap:.8rem;padding:.75rem 1rem;border-radius:11px;border:1px solid var(--br);background:var(--sf);margin-bottom:.65rem;transition:border-color .3s}
+.ci:hover{border-color:var(--bra)}
+.ci-ico{font-size:1rem;flex-shrink:0}
+.ci-l{font-size:.62rem;color:var(--mu);letter-spacing:.07em;text-transform:uppercase}
+.ci-v{font-size:.83rem}
+.ci-v a{color:var(--tx);text-decoration:none;transition:color .25s}
+.ci-v a:hover{color:var(--g1)}
+.cform{display:flex;flex-direction:column;gap:.9rem}
+.frow2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{display:flex;flex-direction:column;gap:.3rem}
+.fg label{font-size:.7rem;color:var(--mu);letter-spacing:.06em}
+.fg input,.fg textarea{background:var(--sf);border:1px solid var(--br);border-radius:9px;padding:.65rem .9rem;color:var(--tx);font-family:var(--fb);font-size:.84rem;outline:none;transition:border-color .3s,box-shadow .3s;resize:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--g1);box-shadow:0 0 0 3px rgba(107,200,155,0.08)}
+.fg textarea{height:95px}
+.fsub{padding:.8rem;border-radius:10px;background:var(--grad);color:#0e0f0d;font-weight:700;font-size:.86rem;border:none;cursor:pointer;transition:opacity .3s,transform .3s;box-shadow:0 4px 20px rgba(107,200,155,0.22)}
+.fsub:hover{opacity:.87;transform:translateY(-2px)}
+
+/* footer */
+footer{padding:1.8rem 5vw;border-top:1px solid var(--br);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fc{font-size:.73rem;color:var(--mu)}
+.fc span{color:var(--g2)}
+.fl{display:flex;gap:1.1rem}
+.fl a{font-size:.73rem;color:var(--mu);text-decoration:none;transition:color .25s}
+.fl a:hover{color:var(--g1)}
+
+/* resume download */
+.dl-cta{text-align:center;margin-top:2.5rem}
+.dl-cta p{font-size:.73rem;color:var(--mu);margin-top:.6rem}
+
+/* mobile */
+@media(max-width:780px){
+  .nl{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--bg2);padding:1.1rem 5vw;border-bottom:1px solid var(--br);gap:1rem;z-index:10}
+  .nl.open{display:flex}
+  .ncta{display:none}
+  .hbg{display:flex}
+  .arow,.crow{grid-template-columns:1fr}
+  .frow2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="orb o1"></div><div class="orb o2"></div>
+<button id="tt" title="Toggle theme">🌙</button>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">DV.</a>
+  <ul class="nl" id="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#activities">Activities</a></li>
+    <li><a href="#ai">Ask AI</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:drishti09102@gmail.com" class="ncta">Say Hello ✉</a>
+  <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hbg-el"></div>
+  <div class="hgrid"></div>
+  <canvas id="hc"></canvas>
+  <div class="hcon">
+    <div class="badge"><span class="bdot"></span>CSE AI&ML · First Year · 2025</div>
+    <h1 class="hname">Drishti<br><span class="g">Verma.</span></h1>
+    <p class="hsub"><span class="tw" id="tw"></span><span class="tc">|</span></p>
+    <p class="hdesc"><strong>Frontend developer &amp; AI enthusiast</strong> from Zirakpur, building responsive web projects, exploring AI-assisted workflows, and turning ideas into functional digital products.</p>
+    <div class="hact">
+      <a href="#projects" class="bp">View Projects →</a>
+      <a href="#contact" class="bg">Let's Connect</a>
+    </div>
+    <div class="hsoc">
+      <a href="https://github.com/drishtiverma09" target="_blank" class="soc" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a href="mailto:drishti09102@gmail.com" class="soc" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      </a>
+      <a href="tel:+919056702650" class="soc" title="Phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.17 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 5.25 5.25l1.12-1.12a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hscroll"><span>scroll</span><div class="sbar"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sl">About</div>
+  <h2 class="st rv">The person <span class="hi">behind the code</span></h2>
+  <div class="arow">
+    <div class="rv">
+      <div class="acard">
+        <span class="acard-emoji">👩‍💻</span>
+        <div class="acard-name">Drishti Verma</div>
+        <div class="acard-role">CSE (AI&ML) · 2025–2026</div>
+        <div class="acard-loc">📍 Zirakpur, Punjab</div>
+      </div>
+    </div>
+    <div class="atext rv d1">
+      <p><strong>First-year student</strong> with a genuine obsession for building things on the web. I chose AI & ML because technology fascinates me — I love exploring how things work and using AI to create real, useful solutions.</p>
+      <p>Passionate about <strong>frontend development</strong>, AI-assisted workflows, and creative problem-solving. Always learning. Always building.</p>
+      <div class="chips">
+        <span class="chip">🤖 AI Tools</span>
+        <span class="chip">💡 Startups</span>
+        <span class="chip">🎨 UI/UX</span>
+        <span class="chip">💃 Dance</span>
+        <span class="chip">🚀 Web Dev</span>
+        <span class="chip">✍️ Prompt Eng.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sl">Skills</div>
+  <h2 class="st rv">What I <span class="hi">work with</span></h2>
+  <div class="sgrid">
+    <div class="sc rv">
+      <div class="sc-ico">🌐</div><div class="sc-nm">Frontend</div>
+      <div class="pills"><span class="pill">HTML5</span><span class="pill">CSS3</span><span class="pill">JavaScript</span><span class="pill">Responsive</span><span class="pill">DOM</span></div>
+    </div>
+    <div class="sc rv d1">
+      <div class="sc-ico">💻</div><div class="sc-nm">Languages</div>
+      <div class="pills"><span class="pill">JavaScript</span><span class="pill">Python</span><span class="pill gd">Backend ↗</span></div>
+    </div>
+    <div class="sc rv d2">
+      <div class="sc-ico">🛠️</div><div class="sc-nm">Tools</div>
+      <div class="pills"><span class="pill">Git & GitHub</span><span class="pill">VS Code</span><span class="pill">Streamlit</span><span class="pill">Canva</span></div>
+    </div>
+    <div class="sc rv d3">
+      <div class="sc-ico">🤖</div><div class="sc-nm">AI / ML</div>
+      <div class="pills"><span class="pill">AI-Assisted Dev</span><span class="pill">Prompt Eng.</span><span class="pill">ML Concepts</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sl">Projects</div>
+  <h2 class="st rv">Things I've <span class="hi">built</span></h2>
+  <div class="pgrid">
+
+    <div class="pc rv">
+      <div class="pt" style="background:linear-gradient(135deg,#080d09,#0d1f13)">
+        <div class="pt-ico">🏫</div><div class="pt-ov"></div>
+        <div class="tbs"><span class="tb">HTML</span><span class="tb">CSS</span><span class="tb">JS</span></div>
+      </div>
+      <div class="pb">
+        <div class="pnum">01 · Web App · 2025</div>
+        <div class="ptitle">ClubNetwork</div>
+        <p class="pdesc">Responsive college club platform — clubs, events, auditions, theme toggle, image sliders. Deployed on Vercel.</p>
+        <div class="pfl">
+          <a href="https://club-network-six.vercel.app/" target="_blank" class="pl lv">Live ↗</a>
+          <a href="https://github.com/DeenahSheikh/Club-Network.git" target="_blank" class="pl">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc rv d2">
+      <div class="pt" style="background:linear-gradient(135deg,#050f0a,#0a1a10)">
+        <div class="pt-ico">🧮</div><div class="pt-ov"></div>
+        <div class="tbs"><span class="tb">Python</span><span class="tb">Streamlit</span></div>
+      </div>
+      <div class="pb">
+        <div class="pnum">02 · Python App · 2025</div>
+        <div class="ptitle">Scientific Calculator</div>
+        <p class="pdesc">Interactive scientific calculator built with Python & Streamlit. Clean UI, wide range of math operations.</p>
+        <div class="pfl">
+          <a href="https://github.com/drishtiverma09/Scientific-Calculator.git" target="_blank" class="pl lv">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pc wip rv d3">
+      <div class="pt" style="background:var(--bg3)">
+        <div class="pt-ico" style="opacity:.2;font-size:2.2rem">⚡</div><div class="pt-ov"></div>
+      </div>
+      <div class="pb">
+        <div class="pnum">03 · Coming 2026</div>
+        <div class="ptitle">Something new...</div>
+        <p class="pdesc">Ideas are brewing. Code is happening. Stay tuned.</p>
+        <div class="pfl"><a href="https://github.com/drishtiverma09" target="_blank" class="pl">Follow on GitHub</a></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="sl">Activities</div>
+  <h2 class="st rv">What I've <span class="hi">been up to</span></h2>
+  <div style="margin-top:2.5rem">
+    <div class="agtabs rv" id="tabs">
+      <button class="atab on" data-cat="all">All</button>
+      <button class="atab" data-cat="dev">Dev</button>
+      <button class="atab" data-cat="ai">AI</button>
+      <button class="atab" data-cat="life">Life</button>
+    </div>
+    <div class="acardsw rv d1" id="actCards">
+      <div class="acard2" data-cat="dev">
+        <div class="ac2-ico">🤝</div>
+        <div class="ac2-title">Team Collab — ClubNetwork</div>
+        <div class="ac2-sub">Frontend · GitHub · 2025</div>
+        <div class="ac2-desc">Built a multi-page club platform with a team — UI, themes, version control.</div>
+        <span class="ac2-badge">Deployed on Vercel</span>
+      </div>
+      <div class="acard2" data-cat="dev">
+        <div class="ac2-ico">🐍</div>
+        <div class="ac2-title">Python App Dev</div>
+        <div class="ac2-sub">Streamlit · 2025</div>
+        <div class="ac2-desc">Built and shipped a scientific calculator end-to-end using Python & Streamlit.</div>
+        <span class="ac2-badge">Completed</span>
+      </div>
+      <div class="acard2" data-cat="ai">
+        <div class="ac2-ico">🧠</div>
+        <div class="ac2-title">AI Tools Explorer</div>
+        <div class="ac2-sub">Prompt Eng. · 2025–2026</div>
+        <div class="ac2-desc">Exploring AI productivity tools and integrating AI into personal projects.</div>
+        <span class="ac2-badge">Ongoing</span>
+      </div>
+      <div class="acard2" data-cat="life">
+        <div class="ac2-ico">💃</div>
+        <div class="ac2-title">Dance & Performing Arts</div>
+        <div class="ac2-sub">Personal · Ongoing</div>
+        <div class="ac2-desc">Believes creativity in art and code share the same energy — expression and practice.</div>
+        <span class="ac2-badge">Passion</span>
+      </div>
+      <div class="acard2" data-cat="life">
+        <div class="ac2-ico">🚀</div>
+        <div class="ac2-title">Startup Thinking</div>
+        <div class="ac2-sub">Entrepreneurship · 2025</div>
+        <div class="ac2-desc">Always scribbling business ideas alongside code. Exploring the startup mindset.</div>
+        <span class="ac2-badge">Exploring</span>
+      </div>
+      <div class="acard2" data-cat="dev">
+        <div class="ac2-ico">📦</div>
+        <div class="ac2-title">Portfolio Building</div>
+        <div class="ac2-sub">Year 1 · 2025</div>
+        <div class="ac2-desc">Building a portfolio from the very first year — showing up before it's perfect.</div>
+        <span class="ac2-badge">In Progress</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI CHAT -->
+<section id="ai">
+  <div class="sl">AI Feature</div>
+  <h2 class="st rv">Ask me <span class="hi">anything</span></h2>
+  <p style="color:var(--mu);font-size:.88rem;margin-top:.5rem;margin-bottom:0" class="rv d1">Powered by Claude · Ask about my skills, projects, or goals</p>
+
+  <div class="ai-wrap rv d2">
+    <div class="ai-header">
+      <span class="ai-dot"></span>
+      <div>
+        <div class="ai-title">Drishti's AI Assistant</div>
+        <div class="ai-sub">Powered by Claude · Ask anything about me</div>
+      </div>
+    </div>
+    <div class="ai-msgs" id="aiMsgs">
+      <div class="msg bot">
+        <div class="msg-av">✨</div>
+        <div class="bubble">Hi! I'm Drishti's AI assistant. Ask me about her skills, projects, goals, or anything you're curious about! 👋</div>
+      </div>
+    </div>
+    <div class="ai-chips">
+      <button class="aq" onclick="askQ('What skills does Drishti have?')">Skills?</button>
+      <button class="aq" onclick="askQ('Tell me about her projects')">Projects?</button>
+      <button class="aq" onclick="askQ('Is she open to internships?')">Internships?</button>
+      <button class="aq" onclick="askQ('What are her career goals?')">Goals?</button>
+    </div>
+    <div class="ai-inp">
+      <input type="text" id="aiInput" placeholder="Ask something about Drishti..." onkeydown="if(event.key==='Enter')sendAI()">
+      <button class="ai-send" onclick="sendAI()">Send →</button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sl">Contact</div>
+  <h2 class="st rv">Let's <span class="hi">connect</span></h2>
+  <div class="crow">
+    <div class="rv">
+      <p class="cblurb">Open to internships, collaborations, hackathons, and project ideas. Whether it's a quick hello or an exciting opportunity — I'd love to hear from you.</p>
+      <div class="ci"><span class="ci-ico">📧</span><div><div class="ci-l">Email</div><div class="ci-v"><a href="mailto:drishti09102@gmail.com">drishti09102@gmail.com</a></div></div></div>
+      <div class="ci"><span class="ci-ico">📞</span><div><div class="ci-l">Phone</div><div class="ci-v"><a href="tel:+919056702650">+91 90567 02650</a></div></div></div>
+      <div class="ci"><span class="ci-ico">📍</span><div><div class="ci-l">Location</div><div class="ci-v">Zirakpur, Punjab, India</div></div></div>
+      <div class="ci"><span class="ci-ico">💻</span><div><div class="ci-l">GitHub</div><div class="ci-v"><a href="https://github.com/drishtiverma09" target="_blank">github.com/drishtiverma09</a></div></div></div>
+    </div>
+    <div class="rv d2">
+      <form class="cform" onsubmit="submitF(event)">
+        <div class="frow2">
+          <div class="fg"><label>Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+        </div>
+        <div class="fg"><label>Message</label><textarea placeholder="Hi Drishti, I'd love to connect about..."></textarea></div>
+        <button class="fsub" type="submit" id="fsub">Send Message ✉</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fc">Built by <span>Drishti Verma</span> · 2025 · Made with ❤️ & ☕</div>
+  <div class="fl">
+    <a href="https://github.com/drishtiverma09" target="_blank">GitHub</a>
+    <a href="mailto:drishti09102@gmail.com">Email</a>
+    <a href="#hero">↑ Top</a>
+  </div>
+</footer>
+
+<script>
+// ── PARTICLES ──
+const cv=document.getElementById('hc'),cx=cv.getContext('2d');
+function rsz(){cv.width=window.innerWidth;cv.height=window.innerHeight}rsz();window.addEventListener('resize',rsz);
+const COLS=['107,200,155','212,168,67','168,213,184'];
+class P{constructor(){this.init()}init(){this.x=Math.random()*cv.width;this.y=Math.random()*cv.height;this.r=Math.random()*1.3+.3;this.vx=(Math.random()-.5)*.25;this.vy=(Math.random()-.5)*.25;this.a=Math.random()*.3+.07;this.c=COLS[Math.floor(Math.random()*COLS.length)]}tick(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>cv.width||this.y<0||this.y>cv.height)this.init()}draw(){cx.beginPath();cx.arc(this.x,this.y,this.r,0,Math.PI*2);cx.fillStyle=`rgba(${this.c},${this.a})`;cx.fill()}}
+const pts=Array.from({length:75},()=>new P());
+function anim(){cx.clearRect(0,0,cv.width,cv.height);pts.forEach(p=>{p.tick();p.draw()});for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){cx.beginPath();cx.moveTo(pts[i].x,pts[i].y);cx.lineTo(pts[j].x,pts[j].y);cx.strokeStyle=`rgba(107,200,155,${.05*(1-d/100)})`;cx.lineWidth=.5;cx.stroke()}}requestAnimationFrame(anim)}anim();
+
+// ── TYPING ──
+const phrases=['Frontend Dev | AI Enthusiast | First-Year Builder','Building with Code, Creativity & Curiosity','Developer in Progress. Dreamer Always.'];
+let pi=0,ci=0,del=false;const te=document.getElementById('tw');
+function tp(){const ph=phrases[pi];if(!del){te.textContent=ph.slice(0,++ci);if(ci===ph.length){del=true;setTimeout(tp,1900);return}}else{te.textContent=ph.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length}}setTimeout(tp,del?36:62)}tp();
+
+// ── SCROLL REVEAL ──
+const ob=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ob.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.rv').forEach(e=>ob.observe(e));
+
+// ── ACTIVE NAV ──
+const secs=document.querySelectorAll('section[id]'),nas=document.querySelectorAll('.nl a');
+window.addEventListener('scroll',()=>{let cur='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id});nas.forEach(a=>a.classList.toggle('act',a.getAttribute('href')==='#'+cur))});
+
+// ── THEME ──
+const tt=document.getElementById('tt');let lt=false;
+tt.addEventListener('click',()=>{lt=!lt;document.body.classList.toggle('light',lt);tt.textContent=lt?'🌙':'☀️'});
+
+// ── HAMBURGER ──
+const hb=document.getElementById('hbg'),nl=document.getElementById('nl');
+hb.addEventListener('click',()=>nl.classList.toggle('open'));
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+// ── ACTIVITY TABS ──
+document.getElementById('tabs').addEventListener('click',e=>{
+  if(!e.target.classList.contains('atab'))return;
+  document.querySelectorAll('.atab').forEach(t=>t.classList.remove('on'));
+  e.target.classList.add('on');
+  const cat=e.target.dataset.cat;
+  document.querySelectorAll('.acard2').forEach(c=>{
+    c.style.display=(cat==='all'||c.dataset.cat===cat)?'block':'none';
+  });
+});
+
+// ── FORM ──
+function submitF(e){e.preventDefault();const b=document.getElementById('fsub');b.textContent='✓ Sent!';b.style.background='linear-gradient(135deg,#4ade80,#22c55e)';setTimeout(()=>{b.textContent='Send Message ✉';b.style.background=''},3000)}
+
+// ── AI CHAT ──
+const SYSTEM=`You are Drishti Verma's portfolio AI assistant. Answer questions about her concisely and helpfully.
+
+About Drishti:
+- First-year CSE (AI & ML) student from Zirakpur, Punjab, India (2025)
+- Skills: HTML5, CSS3, JavaScript, Python, Responsive Web Design, Git/GitHub, Streamlit, Canva
+- Currently learning: React.js, Node.js, Machine Learning, Backend development
+- AI interests: Prompt Engineering, AI-assisted development, AI productivity tools
+- Projects: ClubNetwork (college club website, live at club-network-six.vercel.app), Scientific Calculator (Python + Streamlit)
+- Goals: Internships in web development or AI, real-world project experience, exploring startup ideas
+- Interests: Dance & performing arts, UI/UX design, entrepreneurship, AI tools
+- Email: drishti09102@gmail.com | GitHub: drishtiverma09 | Phone: +91 9056702650
+- Open to internships, collaborations, hackathons, freelance projects
+Keep responses SHORT (2-3 sentences max), friendly, and direct. No markdown headers. Use emojis sparingly.`;
+
+async function askAI(q){
+  const msgs=document.getElementById('aiMsgs');
+  // user bubble
+  msgs.innerHTML+=`<div class="msg usr"><div class="msg-av">👤</div><div class="bubble">${q}</div></div>`;
+  // thinking
+  const tid='t'+Date.now();
+  msgs.innerHTML+=`<div class="msg bot" id="${tid}"><div class="msg-av">✨</div><div class="bubble" style="color:var(--mu);font-style:italic">Thinking...</div></div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  try{
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:200,system:SYSTEM,messages:[{role:'user',content:q}]})});
+    const d=await r.json();
+    const txt=d.content?.[0]?.text||'Sorry, I had trouble with that. Please email Drishti directly!';
+    document.getElementById(tid).querySelector('.bubble').style.cssText='';
+    document.getElementById(tid).querySelector('.bubble').textContent=txt;
+  }catch(err){
+    document.getElementById(tid).querySelector('.bubble').textContent='Oops! Try emailing Drishti directly at drishti09102@gmail.com 💌';
+  }
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function sendAI(){const i=document.getElementById('aiInput');if(!i.value.trim())return;askAI(i.value.trim());i.value=''}
+function askQ(q){askAI(q)}
+</script>
+</body>
+</html>
